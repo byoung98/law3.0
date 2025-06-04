@@ -2,11 +2,19 @@
 import * as React from "react";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
+import { ResponsiveDialog } from "./ndaDetails/responsiveDialog";
+import{
+   DropdownMenu,
+   DropdownMenuCheckboxItem,
+   DropdownMenuContent,
+   DropdownMenuTrigger,}
+from "@/components/ui/dropdown-menu";
 
 import{
    ColumnDef, 
    ColumnFiltersState,
    SortingState,
+   VisibilityState,
    flexRender,
    getCoreRowModel,
    getFilteredRowModel,
@@ -33,6 +41,8 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
    const [sorting, setSorting] = React.useState<SortingState>([]);
    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+   const[columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+   const[rowSelection, setRowSelection] = React.useState({});
    const table = useReactTable({
       data,
       columns,
@@ -42,15 +52,20 @@ export function DataTable<TData, TValue>({
       getSortedRowModel: getSortedRowModel(),
       onColumnFiltersChange: setColumnFilters,
       getFilteredRowModel: getFilteredRowModel(),
+      onColumnVisibilityChange: setColumnVisibility,
+      onRowSelectionChange: setRowSelection,
       state: {
          sorting,
          columnFilters,
+         columnVisibility,
+         rowSelection,
       },
    });
 
    return (
       <div>
-         <div className="flex items-center justify-between p-4">
+         
+         <div className="flex items-center p-4">
             <Input
                placeholder="Filter by NDA ID"
                value={(table.getColumn("ndaID")?.getFilterValue() as string) ?? ""}
@@ -58,7 +73,34 @@ export function DataTable<TData, TValue>({
                   table.getColumn("ndaID")?.setFilterValue(event.target.value)
                }
             />
+            <DropdownMenu>
+               <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="m1-auto">
+                     Columns</Button>
+               </DropdownMenuTrigger>
+               <DropdownMenuContent align="end">
+                  {table
+                  .getAllColumns()
+                  .filter(
+                     (column) => column.getCanHide() && column.id !== "actions" && column.id !== "ndaID")
+                  .map((column) => {
+                     return (
+                     <DropdownMenuCheckboxItem
+                        key={column.id}
+                        className="capitalize"
+                        checked={column.getIsVisible()}
+                        onCheckedChange={(value) =>
+                           column.toggleVisibility(!!value)
+                        }
+                     >
+                       {column.id} 
+                     </DropdownMenuCheckboxItem>
+                     );
+                  })}
+               </DropdownMenuContent>
+            </DropdownMenu>
          </div>
+         
       <div className="rounded-md border">
          <Table>
             <TableHeader>
@@ -91,6 +133,10 @@ export function DataTable<TData, TValue>({
             </TableBody>
          </Table>
       </div>
+      <div className="text-muted-foreground flex justify-center text-sm">
+         {table.getFilteredSelectedRowModel().rows.length} of{" "}
+         {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
       <div className="flex items-center justify-between p-4">
          <Button
             variant="outline"
@@ -113,7 +159,9 @@ export function DataTable<TData, TValue>({
          >
             Next
          </Button>
+         
       </div>
       </div>
+      
    );
 }
