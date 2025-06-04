@@ -12,9 +12,9 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 const links = [
-  { name: 'About', href: '/', icon: HomeIcon  },
-  { name: 'Home', href: '/law3/home', icon: TableCellsIcon},
-  { name: 'Account', href: '/law3/account', icon: UserCircleIcon},
+  { name: 'Welcome Page', href: '/', icon: HomeIcon  },
+  { name: 'NDAs', href: '/law3/dataHome', icon: TableCellsIcon},
+  { name: 'User Info', href: '/law3/userInfo', icon: UserCircleIcon},
 ];
 
 export default async function NavLinks() {

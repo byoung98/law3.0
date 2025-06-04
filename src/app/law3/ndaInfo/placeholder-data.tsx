@@ -1,4 +1,15 @@
-const table = [
+type NDAs = {
+    ndaID: string;
+    ndaType: string;
+    agreementType: string;
+    status: string;
+    otherParty: string;
+    endDate: string;
+    requesterName: string;
+ }
+
+
+export const table: NDAs[] = [
 {
     ndaID:"ICMNDADMA123",
     ndaType: "Master",
@@ -26,12 +37,6 @@ const table = [
     endDate:"Evergreen",
     requesterName:"Jane Doe"
 }
-
-
-
-
-
-
 
 
 ]
