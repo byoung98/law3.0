@@ -1,5 +1,6 @@
 import NavLinks from '@/app/law3/ui/components/nav-links';
 
+
 export default function SideNav() {
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
