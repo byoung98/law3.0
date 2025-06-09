@@ -3,11 +3,11 @@
 import React from "react";
 
 export default function NdaDetails({ params }: { params: { ndaID: string } }) {
-    const { ndaID } = params; // Access the dynamic route parameter
+    //const { ndaID } = params; // Access the dynamic route parameter
 
     // Simulate fetching NDA details based on the ID
     const ndaDetails = {
-        ndaID,
+        ndaID: "ICMNDADMA123",
         ndaType: "Master",
         agreementType: "Standard",
         status: "Executed",
