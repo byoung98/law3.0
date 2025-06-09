@@ -1,3 +1,4 @@
+'use client'
 import Sidenav from "@/app/law3/ui/components/sidenav"
 import Header from "@/components/ui/header";
 
@@ -8,10 +9,10 @@ export default function Layout({
     children: React.ReactNode;
   }>) {
     return (
-      <>
+      <div className="min-h-screen">
     <Header/>
     <Sidenav/>
-        <body>{children}</body>
-      </>
+            <main>{children}</main>
+      </div>
     );
 }

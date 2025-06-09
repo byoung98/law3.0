@@ -46,8 +46,8 @@ const data = await fetchData()
     <h1 style={{textAlign:'center', fontWeight:'bold', fontSize:'40px'}}>All Submitted NDAs</h1>
     <br></br>
 
-    <div className="container mx-auto" py-10>
-        <DataTable columns={columns} data={data} />
+    <div className="container mx-auto py-10">
+    <DataTable columns={columns} data={data} />
         </div>    </>
             );
 
