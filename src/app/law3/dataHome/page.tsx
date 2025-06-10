@@ -1,6 +1,5 @@
 import {columns, NDAs} from "@/app/law3/ndaInfo/columns";
 import {DataTable} from "@/app/law3/ndaInfo/datatable";
-import {table} from "@/app/law3/ndaInfo/placeholder-data";
 
 
 async function fetchData() : Promise<NDAs[]> {

@@ -2,7 +2,12 @@
 
 import React from "react";
 
-export default function NdaDetails({ params }: { params: { ndaID: string } }) {
+//export default function NdaDetails({ params }: { params: { ndaID: string } }) {
+interface NdaDetails { ndaID: string;
+    [key: string]: string | string[] | undefined;
+}
+    
+    export default function NdaDetails({ }: { params: Promise<NdaDetails> }) {
     //const { ndaID } = params; // Access the dynamic route parameter
 
     // Simulate fetching NDA details based on the ID
@@ -30,4 +35,4 @@ export default function NdaDetails({ params }: { params: { ndaID: string } }) {
             </div>
         </div>
     );
-}
+    }

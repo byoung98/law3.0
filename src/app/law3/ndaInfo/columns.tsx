@@ -1,6 +1,5 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-import { ColumnFilterState } from "@/components/ui/column-filter-state";
 import {ArrowUpDown} from "lucide-react";
 import { MoreHorizontal } from "lucide-react";
 import {Button} from "@/components/ui/button";
@@ -8,7 +7,6 @@ import {Checkbox} from "@/components/ui/checkbox";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } 
 from "@/components/ui/dropdown-menu";
 import { DropdownMenuLabel, DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
-import router, { useRouter } from "next/router";
 
 import {
   Dialog,
@@ -22,8 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import {Input} from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { ResponsiveDialog } from "./ndaDetails/responsiveDialog";
+//import { useState } from "react";
 
 
 export type NDAs = {
@@ -58,13 +55,13 @@ export const columns: ColumnDef<NDAs>[] = [
   {
     id: "actions",
       cell: ({ row }) => {
-        const [isDialogOpen, setIsDialogOpen] = useState(false); // Manage dialog state
-        const [selectedNdaID, setSelectedNdaID] = useState<string | null>(null); // Store selected NDA ID
+        //const [isDialogOpen, setIsDialogOpen] = useState(false); // Manage dialog state
+        //const [selectedNdaID, setSelectedNdaID] = useState<string | null>(null); // Store selected NDA ID
 
-        const handleViewDetails = (ndaID: string) => {
-            setSelectedNdaID(ndaID); // Set the selected NDA ID
-            setIsDialogOpen(true); // Open the dialog
-        };
+        //const handleViewDetails = (ndaID: string) => {
+          //  setSelectedNdaID(ndaID); // Set the selected NDA ID
+            //setIsDialogOpen(true); // Open the dialog
+       // };
         return (
           <>
       <DropdownMenu>
