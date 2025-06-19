@@ -9,7 +9,7 @@ class CustomStackServerApp extends StackServerApp {
    redirectUrl,
   }: {
     email: string;
-    password: string;
+    password_hash: string;
     redirectUrl: string;
   }) {
     try {

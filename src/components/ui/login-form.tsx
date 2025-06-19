@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password_hash, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -72,7 +72,7 @@ export function LoginForm() {
                 <Input
                   id="password"
                   type="password"
-                  value={password}
+                  value={password_hash}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
