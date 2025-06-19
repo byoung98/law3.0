@@ -3,21 +3,21 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     try {
-      const authResponse = await stackServerApp.authenticateUser({
+      const authResponse = await stackServerApp.sendMagicLink({
         email,
-        password,
+        redirectUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/law3/dataHome`,
       });
 
       if (authResponse.success) {
-        res.status(200).json({ message: "Login successful", user: authResponse.user });
+        res.status(200).json({ message: "Magic link sent to your email." });
       } else {
-        res.status(401).json({ message: "Invalid credentials" });
+        res.status(500).json({ message: "Failed to send magic link." });
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error("Error during authentication:", error);
       res.status(500).json({ message: "Internal server error" });
     }
   } else {

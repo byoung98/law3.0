@@ -26,23 +26,21 @@ export function LoginForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
-        //body: JSON.stringify({ email}),
-
+        body: JSON.stringify({ email }),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
-        setMessage("Login successful!");
-        // Redirect to another page or handle successful login
-        window.location.href = "/law3/dataHome"; // Redirect to dataHome
-      } else {
-        setMessage(data.message || "Invalid credentials.");
-      }
-    } catch (error) {
-      console.error("Error logging in:", error);
-      setMessage("An error occurred. Please try again.");
+    if (response.ok) {
+      setMessage(data.message);
+      // Redirect to the dashboard or handle successful login
+      window.location.href = "/law3/dataHome";
+    } else {
+      setMessage(data.message || "Authentication failed.");
+    }
+  } catch (error) {
+    console.error("Error during authentication:", error);
+    setMessage("An error occurred. Please try again.");
     }
   };
 
@@ -69,7 +67,7 @@ export function LoginForm() {
                   required
                 />
               </div>
-              <div className="grid gap-2">
+                <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
@@ -78,7 +76,7 @@ export function LoginForm() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-              </div>
+              </div> 
             </div>
             <button
               type="submit"
