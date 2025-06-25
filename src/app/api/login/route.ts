@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { Pool } from "pg"; // PostgreSQL client for Node.js
+//import { NextApiRequest, NextApiResponse } from "next";
+import { Pool } from "pg";
 
 // Create a connection pool to Neon
 const pool = new Pool({
@@ -19,7 +19,8 @@ export async function POST(req: Request) {
     
         try {
           // Query the Neon database to check if the email exists
-          const result = await pool.query("SELECT * FROM users ");//need to fix this
+          const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+
             console.log("Query result:", result);
           if (result.rows.length > 0) {
             // Email exists in the database

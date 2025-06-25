@@ -1,4 +1,6 @@
 import { stackServerApp } from "@/stack";
+import { sendMagicLink } from "@/stack"; 
+
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -6,8 +8,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { email } = req.body;
 
     try {
-      const authResponse = await stackServerApp.sendMagicLink({
+      const authResponse = await sendMagicLink({
         email,
+        //password_hash: "", // Assuming password_hash is not needed for magic link
         redirectUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/law3/dataHome`,
       });
 

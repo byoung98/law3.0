@@ -55,13 +55,7 @@ export const columns: ColumnDef<NDAs>[] = [
   {
     id: "actions",
       cell: ({ row }) => {
-        //const [isDialogOpen, setIsDialogOpen] = useState(false); // Manage dialog state
-        //const [selectedNdaID, setSelectedNdaID] = useState<string | null>(null); // Store selected NDA ID
-
-        //const handleViewDetails = (ndaID: string) => {
-          //  setSelectedNdaID(ndaID); // Set the selected NDA ID
-            //setIsDialogOpen(true); // Open the dialog
-       // };
+        
         return (
           <>
       <DropdownMenu>

@@ -22,7 +22,7 @@ export const table: NDAs[] = [
 {
     ndaID:"ICMNDADMA183",
     ndaType: "Master",
-    agreementType:"standard",
+    agreementType:"standarder",
     status:"Executed",
     otherParty:"Other Country - Test",
     endDate:"Evergreen",
