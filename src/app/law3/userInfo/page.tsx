@@ -35,7 +35,7 @@ const teamMembers = [
     email: "sarah.johnson@company.com",
     avatar: "/placeholder.svg?height=40&width=40",
     role: "Team Lead",
-    status: "online",
+    status: "admin",
     isCurrentUser: true,
   },
   {
@@ -44,7 +44,7 @@ const teamMembers = [
     email: "michael.chen@company.com",
     avatar: "/placeholder.svg?height=40&width=40",
     role: "Senior Developer",
-    status: "online",
+    status: "admin",
     isCurrentUser: false,
   },
   {
@@ -53,7 +53,7 @@ const teamMembers = [
     email: "emily.rodriguez@company.com",
     avatar: "/placeholder.svg?height=40&width=40",
     role: "Frontend Developer",
-    status: "away",
+    status: "user",
     isCurrentUser: false,
   },
   {
@@ -62,7 +62,7 @@ const teamMembers = [
     email: "david.kim@company.com",
     avatar: "/placeholder.svg?height=40&width=40",
     role: "UI/UX Designer",
-    status: "online",
+    status: "admin",
     isCurrentUser: false,
   },
   {
@@ -71,7 +71,7 @@ const teamMembers = [
     email: "lisa.thompson@company.com",
     avatar: "/placeholder.svg?height=40&width=40",
     role: "Frontend Developer",
-    status: "offline",
+    status: "user",
     isCurrentUser: false,
   },
   {
@@ -80,21 +80,17 @@ const teamMembers = [
     email: "alex.martinez@company.com",
     avatar: "/placeholder.svg?height=40&width=40",
     role: "Junior Developer",
-    status: "online",
+    status: "admin",
     isCurrentUser: false,
   },
 ]
 
 function getStatusColor(status: string) {
   switch (status) {
-    case "online":
+    case "admin":
       return "bg-green-500"
-    case "away":
+    case "user":
       return "bg-yellow-500"
-    case "offline":
-      return "bg-gray-400"
-    default:
-      return "bg-gray-400"
   }
 }
 
@@ -114,10 +110,6 @@ export default function ProfilePage() {
           <h1 className="text-3xl font-bold">My Profile</h1>
           <p className="text-muted-foreground">Manage your account and team information</p>
         </div>
-        <Button variant="outline" className="bg-white text-black">
-          <Settings className="mr-2 h-4 w-4" />
-          Settings
-        </Button>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -214,9 +206,9 @@ export default function ProfilePage() {
                       <Badge
                         variant="outline"
                         className={`text-xs ${
-                          member.status === "online"
+                          member.status === "admin"
                             ? "text-green-700 border-green-200"
-                            : member.status === "away"
+                            : member.status === "user"
                               ? "text-yellow-700 border-yellow-200"
                               : "text-gray-700 border-gray-200"
                         }`}

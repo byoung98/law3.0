@@ -1,6 +1,5 @@
 import {columns, NDAs} from "@/app/law3/ndaInfo/columns";
 import {DataTable} from "@/app/law3/ndaInfo/datatable";
-import { headers } from "next/headers";
 
 // import { Pool } from 'pg';
 
@@ -10,24 +9,24 @@ import { headers } from "next/headers";
 //     rejectUnauthorized: false,
 //   },
 // });
+import { headers } from "next/headers";
 
-async function fetchData(): Promise<NDAs[]> {
+async function fetchData() {
   const host = (await headers()).get("host");
-  if(!host) {
-    throw new Error("Host header is not available");
-  }
-  const protocol = process.env.NODE_ENV === 'development' ? 'https' : 'http';
-  const baseUrl = `${protocol}://${host}`;  
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
 
+  if (!host) throw new Error("Unable to determine host");
+
+  const baseUrl = `${protocol}://${host}`;
   const response = await fetch(`${baseUrl}/api/ndas`, { cache: "no-store" });
 
   if (!response.ok) {
-      throw new Error("Failed to fetch data from the database");
-    }
-  
-    return response.json();
+    throw new Error("Failed to fetch data from the database");
   }
-  
+
+  return response.json();
+}
+
 
 export default async function Page() {
     const data = await fetchData();
