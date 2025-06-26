@@ -13,7 +13,9 @@ import { headers } from "next/headers";
 
 async function fetchData(): Promise<NDAs[]> {
   const host = (await headers()).get("host");
-  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  if(!host) {
+    throw new Error("Host header is not available");
+  }
   const protocol = process.env.NODE_ENV === 'development' ? 'https' : 'http';
   const baseUrl = `${protocol}://${host}`;  
 
