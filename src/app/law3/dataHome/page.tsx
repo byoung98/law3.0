@@ -1,5 +1,6 @@
 import {columns, NDAs} from "@/app/law3/ndaInfo/columns";
 import {DataTable} from "@/app/law3/ndaInfo/datatable";
+import { headers } from "next/headers";
 
 // import { Pool } from 'pg';
 
@@ -11,10 +12,14 @@ import {DataTable} from "@/app/law3/ndaInfo/datatable";
 // });
 
 async function fetchData(): Promise<NDAs[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const response = await fetch(`${baseUrl}/api/ndas`, { cache: 'no-store' });
-  
-    if (!response.ok) {
+  const host = (await headers()).get("host");
+  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const protocol = process.env.NODE_ENV === 'development' ? 'https' : 'http';
+  const baseUrl = `${protocol}://${host}`;  
+
+  const response = await fetch(`${baseUrl}/api/ndas`, { cache: "no-store" });
+
+  if (!response.ok) {
       throw new Error("Failed to fetch data from the database");
     }
   
