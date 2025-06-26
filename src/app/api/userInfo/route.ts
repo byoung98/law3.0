@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { Pool } from "pg"; // PostgreSQL client for Node.js
+import { NextRequest, NextResponse } from "next/server";
+import { Pool } from "pg";
 
 // Create a connection pool to Neon
 const pool = new Pool({
@@ -9,38 +9,33 @@ const pool = new Pool({
   },
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-     const { userId } = req.query;
-    // const {email} = req.query;
-    // const {location} = req.query;
-    // const {team_name} = req.query;
-    // const {username} = req.query;
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const userId = searchParams.get("userId");
 
-    try {
-      // Query the database for the current user
-      const userResult = await pool.query("SELECT * FROM users WHERE id = $1", [userId]);
+  if (!userId) {
+    return NextResponse.json({ message: "Missing userId parameter" }, { status: 400 });
+  }
 
-      if (userResult.rows.length === 0) {
-        return res.status(404).json({ message: "User not found" });
-      }
+  try {
+    const userResult = await pool.query("SELECT * FROM users WHERE id = $1", [userId]);
 
-      const currentUser = userResult.rows[0];
-
-      // Query the database for the team members of the current user
-      const teamResult = await pool.query(
-        "SELECT * FROM users WHERE team_name = $1 AND id != $2",
-        [currentUser.team_name, currentUser.id]
-      );
-
-      const teamMembers = teamResult.rows;
-
-      res.status(200).json({ currentUser, teamMembers });
-    } catch (error) {
-      console.error("Error querying the database:", error);
-      res.status(500).json({ message: "Internal server error" });
+    if (userResult.rows.length === 0) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
+
+    const currentUser = userResult.rows[0];
+
+    const teamResult = await pool.query(
+      "SELECT * FROM users WHERE team_name = $1 AND id != $2",
+      [currentUser.team_name, currentUser.id]
+    );
+
+    const teamMembers = teamResult.rows;
+
+    return NextResponse.json({ currentUser, teamMembers });
+  } catch (error) {
+    console.error("Error querying the database:", error);
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }

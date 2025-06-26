@@ -1,4 +1,3 @@
-import { stackServerApp } from "@/stack";
 import { sendMagicLink } from "@/stack"; 
 
 import { NextApiRequest, NextApiResponse } from "next";

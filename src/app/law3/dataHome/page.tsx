@@ -1,14 +1,14 @@
 import {columns, NDAs} from "@/app/law3/ndaInfo/columns";
 import {DataTable} from "@/app/law3/ndaInfo/datatable";
 
-import { Pool } from 'pg';
+// import { Pool } from 'pg';
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function fetchData(): Promise<NDAs[]> {
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';

@@ -11,7 +11,7 @@ export const stackServerApp = new StackServerApp({
 // Extend the StackServerApp class to add the sendMagicLink method
 export async function sendMagicLink({
     email,
-    redirectUrl,
+    //redirectUrl,
   }: {
     email: string;
    // password_hash: string;
