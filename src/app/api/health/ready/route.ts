@@ -11,6 +11,6 @@ import { NextRequest, NextResponse } from "next/server";
 export const revalidate = 0; // no cache
 
 export async function GET(req: NextRequest) {
-  // TODO - Add your health check logic here
+  // TODO - Add health check logic here
   return NextResponse.json({ status: "ready" });
 }

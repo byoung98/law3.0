@@ -24,6 +24,7 @@ import { Label } from "@/components/ui/label";
 
 
 export type NDAs = {
+  get(ndaID: string, ndaType: string, agreementType: string, status: string, otherParty: string, endDate: string, requesterName: string): unknown;
   ndaID: string;
   ndaType: string;
   agreementType: string;

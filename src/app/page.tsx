@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
-import TiAuthButton from "../components/ti-auth-button";
+import TiAuthButton from "../components/ti-auth-button"; 
 import { redirect } from "next/navigation";
 
 export default async function Home() {
@@ -21,6 +21,7 @@ export default async function Home() {
             <h1 className="text-2xl md:text-4xl text-red-700 font-bold mb-4 md:mb-0 pl-4 md:pl-8 whitespace-normal">
               Welcome to LawNDA 3.0
             </h1>
+            {/* iniitiates TISignInButtonContent function */}
             <TiAuthButton />
           </div>
         </div>

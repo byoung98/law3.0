@@ -1,12 +1,3 @@
-/**
- * Providers component that wraps the application with context providers.
- *
- * Currently includes:
- * - `SessionProvider` from `next-auth/react` for authentication session management.
- *
- * Add additional providers here as needed.
- */
-
 "use client";
 
 import { SessionProvider } from "next-auth/react";

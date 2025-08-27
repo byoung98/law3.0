@@ -4,6 +4,7 @@ import { Pool } from "pg";
 // Create a connection pool to Neon
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  //connectionString:process.env.ORACLE_USER,
   ssl: {
     rejectUnauthorized: false,
   },
