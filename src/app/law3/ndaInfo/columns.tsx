@@ -24,14 +24,14 @@ import { Label } from "@/components/ui/label";
 
 
 export type NDAs = {
-  get(ndaID: string, ndaType: string, agreementType: string, status: string, otherParty: string, endDate: string, requesterName: string): unknown;
-  ndaID: string;
-  ndaType: string;
-  agreementType: string;
-  status: string;
-  otherParty: string;
-  endDate: string;
-  requesterName: string;
+  get(NDA_ID: string, CONTRACT_ADMIN: string, CIP: string, STATUS: string, BU: string, ENDDATE: string, REQUESTER_NAME: string): unknown;
+  NDA_ID: string;
+  CONTRACT_ADMIN: string;
+  CIP: string;
+  STATUS: string;
+  BU: string;
+  ENDDATE: string;
+  REQUESTER_NAME: string;
 };
 
 export const columns: ColumnDef<NDAs>[] = [
@@ -69,7 +69,7 @@ export const columns: ColumnDef<NDAs>[] = [
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
       <DropdownMenuItem
-         onClick={() => navigator.clipboard.writeText(row.original.ndaID)}
+         onClick={() => navigator.clipboard.writeText(row.original.NDA_ID)}
           >
             Copy NDA ID
           </DropdownMenuItem>
@@ -85,31 +85,31 @@ export const columns: ColumnDef<NDAs>[] = [
       The following are details of this NDA
             </DialogDescription>
           </DialogHeader>
-          <Label htmlFor="ndaID">NDA ID</Label>
+          <Label htmlFor="NDA_ID">NDA ID</Label>
           <Input
-            id="ndaID"
-            value={row.original.ndaID}
+            id="NDA_ID"
+            value={row.original.NDA_ID}
             readOnly
             className="mb-4"
           />
-          <Label htmlFor="ndaType">NDA Type</Label>
+          <Label htmlFor="CONTRACT_ADMIN">NDA Type</Label>
           <Input
-            id="ndaType"
-            value={row.original.ndaType}
+            id="CONTRACT_ADMIN"
+            value={row.original.CONTRACT_ADMIN}
             readOnly
             className="mb-4"
           />
-          <Label htmlFor="agreementType">Agreement Type</Label>
+          <Label htmlFor="CIP">Agreement Type</Label>
           <Input
-            id="agreementType"
-            value={row.original.agreementType}
+            id="CIP"
+            value={row.original.CIP}
             readOnly
             className="mb-4"
           />
-          <Label htmlFor="status">Status</Label>
+          <Label htmlFor="STATUS">STATUS</Label>
           <Input
-            id="status"
-            value={row.original.status}
+            id="STATUS"
+            value={row.original.STATUS}
             readOnly
             className="mb-4" ></Input>
           <DialogFooter>
@@ -130,11 +130,11 @@ export const columns: ColumnDef<NDAs>[] = [
       },
 
     {
-    accessorKey: "ndaID",
+    accessorKey: "NDA_ID",
     header: "NDA ID",
     },
   {
-    accessorKey: "ndaType",
+    accessorKey: "CONTRACT_ADMIN",
     header: ({ column }) => {
       return (<Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -145,7 +145,7 @@ export const columns: ColumnDef<NDAs>[] = [
     },
     },
   {
-    accessorKey: "agreementType",
+    accessorKey: "CIP",
     header: ({ column }) => {
       return (
         <Button
@@ -159,29 +159,29 @@ export const columns: ColumnDef<NDAs>[] = [
     },
   },
   {
-    accessorKey: "status",
+    accessorKey: "STATUS",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Status
+          STATUS
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "otherParty",
+    accessorKey: "BU",
     header: "Other Party",
   },
   {
-    accessorKey: "endDate",
+    accessorKey: "ENDDATE",
     header: "End Date",
   },
   {
-    accessorKey: "requesterName",
+    accessorKey: "REQUESTER_NAME",
     header: "Requester Name",
   },
 ];

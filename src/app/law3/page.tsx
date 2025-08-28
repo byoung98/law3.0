@@ -41,9 +41,9 @@ export default async function Page() {
           <DataTable
             columns={columns}
             data={data}
-            filterColumn="ndaID"
+            filterColumn="NDA_ID"
             filterColumnDisplay="Filter By NDA"
-            disallowColumnHideList={['select', 'actions', 'ndaID']}
+            disallowColumnHideList={['select', 'actions', 'NDA_ID']}
           />
         </div>
       </div>

@@ -1,3 +1,4 @@
+const oracledb = require('oracledb');
 // define reusuable database queries
 import {connectToOracle} from "../lib/server";
 
@@ -13,7 +14,12 @@ try{
         throw new Error("Database connection is not established");
     }
     //query the Header table 
-    const result = await connection.execute(`SELECT * FROM LAW_HEADER`);
+    const result = await connection.execute(`SELECT * FROM LAW_HEADER`,
+      [], 
+                 { outFormat: oracledb.OUT_FORMAT_OBJECT }
+    );
+    
+    //console.log(result.rows);
         return result.rows;
 
         }catch(error){

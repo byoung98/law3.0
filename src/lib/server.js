@@ -7,14 +7,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//Enable thick mode
-oracledb.initOracleClient({libDir: "C:\Oracle\instantclient_19_26"});
 
 const { ORACLE_USER, ORACLE_PASSWORD, ORACLE_CONNECTION_STRING } = process.env;
 
    async function connectToOracle(){
     try{
-        const connection = await oracledb.getConnection({
+//Enable thick mode
+
+oracledb.OUT_FORMAT_OBJECT;       
+oracledb.initOracleClient({libDir: "C:\\Oracle\\instantclient_19_26\\instantclient-basic-windows.x64-19.26.0.0.0dbru\\instantclient_19_26"});
+const connection = await oracledb.getConnection({   
           user: ORACLE_USER,
           password: ORACLE_PASSWORD,
           connectString:ORACLE_CONNECTION_STRING,   
@@ -32,7 +34,6 @@ const { ORACLE_USER, ORACLE_PASSWORD, ORACLE_CONNECTION_STRING } = process.env;
 
 //         //return rows as JSON obects with column names
 //         const result = await connection.execute(`SELECT * FROM LAW_HEADER`,
-//            // const result = await connection.execute(`SELECT SYSDATE FROM DUAL`,
 //             [], 
 //             { outFormat: oracledb.OUT_FORMAT_OBJECT }
 //                 );  //return column names instead of arrays
