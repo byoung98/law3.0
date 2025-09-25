@@ -18,9 +18,7 @@ try{
       [], 
                  { outFormat: oracledb.OUT_FORMAT_OBJECT }
     );
-    
-    //console.log(result.rows);
-        return result.rows;
+            return result.rows;
 
         }catch(error){
             console.error('Error fetching data:', error);

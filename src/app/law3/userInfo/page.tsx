@@ -5,10 +5,34 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CalendarDays, Mail, MapPin, Phone, Settings, Users } from "lucide-react"
+import RenderResult from "next/dist/server/render-result"
 
-// Mock data - in a real app, this would come from your authentication system and API
+
+export type userInfo = {
+  get(EMPLOYEE: string, TEAM_NAME:string, TEAM_ROLE:string, 
+    APP_ROLE:string, EMPLOYEE_ID:string, LOCATION:string, JOIN_DATE:Date, EMAIL:string): unknown;
+    EMPLOYEE:string;
+    TEAM_NAME:string;
+    TEAM_ROLE:string;
+    APP_ROLE:string;
+    EMPLOYEE_ID:string;
+    LOCATION:string;
+    JOIN_DATE:string;
+    EMAIL:string;
+};
+
+
+
+// gwtUserData = {
+
+//   //mAKE A CALL TO THE UNSTABLE_REVALIDATE_RENAME_ERROR.TS TO 
+
+//   //Result
+// }
+
+//pull current user value in from sso and compare it to a valid user in database
 const currentUser = {
-  id: "1",
+ // id: "1",
   name: "Sarah Johnson",
   email: "sarah.johnson@company.com",
   avatar: "/placeholder.svg?height=100&width=100",

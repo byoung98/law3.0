@@ -2,13 +2,11 @@
 
 import React from "react";
 
-//export default function NdaDetails({ params }: { params: { ndaID: string } }) {
 interface NdaDetails { NDA_ID: string;
     [key: string]: string | string[] | undefined;
 }
     
     export default function NdaDetails({ }: { params: Promise<NdaDetails> }) {
-    //const { ndaID } = params; // Access the dynamic route parameter
 
     // Simulate fetching NDA details based on the ID
     const ndaDetails = {
@@ -25,7 +23,7 @@ interface NdaDetails { NDA_ID: string;
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold">NDA Details</h1>
             <div className="mt-4">
-                <p><strong>NDA ID:</strong> {ndaDetails.NDAID}</p>
+                <p><strong>NDA ID:</strong> {ndaDetails.NDA_ID}</p>
                 <p><strong>NDA Type:</strong> {ndaDetails.ndaType}</p>
                 <p><strong>Agreement Type:</strong> {ndaDetails.agreementType}</p>
                 <p><strong>Status:</strong> {ndaDetails.status}</p>
