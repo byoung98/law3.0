@@ -35,4 +35,44 @@ User capabilities:
 4. Users can view only the data from the home page.  
 
 Non-Goals:
+-
+
+Out of Scope Items:
+- We will not be rolling out the ability for super users to manage multiple teams
+- We will not be rolling out the ability for teams to perform tasks or assign tasks
+- We will not be rolling out the ability to upload data from the frontend. All data will be loaded from the backend in this phase.
+
+------------------------------------------------------------------------------------------------------------------
+Core Features:
+-
+1. User management
+   - Roles: Admin(Super User) and User (limited - view only)
+2. Data table of submitted NDAs
+   - database should include audit trail of who updated the record and when 
+
+Authentication:
 - 
+->>> Add more details here
+
+Data Presistance:
+- 
+->>> Add more details here
+
+------------------------------------------------------------------------------------------------------------------
+
+System Diagram
+-
+->>> include diagram of the app flow
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+Data Model
+-
+->>> include data model of how data flows thoughout the application
+
+
+
+
+
