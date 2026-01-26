@@ -15,3 +15,23 @@ User Story for LAWNDA 3.0:
 10. [X] Data table should be able to select X number of NDAs and show count
 11. [X] Provide a logout option
 12. [X] Add a current user page with access level and user info (eg. name, ID, email, access level)
+
+------------------------------------------------------------------------------------------------------------------
+Requirements:
+
+Users: 
+This application allows for two different types of users such as Admin and User.
+
+Admin(Super User) capabilities:
+1. Admin users have the ability to manage and create their team with the user management page.
+2. Admin users should be able to add users and remove users from the user management page.
+3. Admin users will have visibility to all data from the home page and be able to edit it. 
+
+User capabilities:
+1. Regular Users have view only access in the user management page.
+2. Users can modify their personal data in the user management page
+3. Users can view all members of their team and role types in the user management page.
+4. Users can view only the data from the home page.  
+
+Non-Goals:
+- 
