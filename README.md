@@ -18,6 +18,7 @@ User Story for LAWNDA 3.0:
 
 ------------------------------------------------------------------------------------------------------------------
 Requirements:
+-
 
 Users: 
 This application allows for two different types of users such as Admin and User.
